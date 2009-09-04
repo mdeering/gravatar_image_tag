@@ -1,0 +1,20 @@
+!http://s.gravatar.com/images/logo.png!
+
+h1. Gravitar Helper Plugin
+
+Rails view helper for grabbing "Gravitar":http://en.gravatar.com/ images.  The goal here is to be highly configurable and have those configuration points well documented.
+
+h2. Install as a Ruby on Rails Plugin
+
+The traditional way.
+<pre>./script/plugin install git://github.com/mdeering/attribute_normalizer.git</pre>
+
+or the old-school but still c00l way!
+<pre>piston import git://github.com/mdeering/attribute_normalizer.git vendor/plugins/attribute_normalizer</pre>
+
+or for all you hip gitsters.
+<pre>git submodule add git://github.com/mdeering/attribute_normalizer.git vendor/plugins/attribute_normalizer git submodule init</pre>
+
+h2. Usage
+
+h2. Configuration
