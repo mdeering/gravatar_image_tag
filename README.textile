@@ -1,4 +1,4 @@
-!http://s.gravatar.com/images/logo.png!
+!http://s.gravatar.com/images/logo.png(Gravitar Logo)!
 
 h1. Gravitar Helper Plugin
 
@@ -7,14 +7,30 @@ Rails view helper for grabbing "Gravitar":http://en.gravatar.com/ images.  The g
 h2. Install as a Ruby on Rails Plugin
 
 The traditional way.
-<pre>./script/plugin install git://github.com/mdeering/attribute_normalizer.git</pre>
+<pre>./script/plugin install git://github.com/mdeering/gravitar_helper.git</pre>
 
 or the old-school but still c00l way!
-<pre>piston import git://github.com/mdeering/attribute_normalizer.git vendor/plugins/attribute_normalizer</pre>
+<pre>piston import git://github.com/mdeering/gravitar_helper.git vendor/plugins/gravitar_helper</pre>
 
 or for all you hip gitsters.
-<pre>git submodule add git://github.com/mdeering/attribute_normalizer.git vendor/plugins/attribute_normalizer git submodule init</pre>
+<pre>git submodule add git://github.com/mdeering/gravitar_helper.git vendor/plugins/gravitar_helper git submodule init</pre>
 
 h2. Usage
 
+Once you have installed it as a plugin for your rails app usage is simple.
+
+<pre>
+  gravitar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'))
+</pre>
+
+*Boom* here is my gravitar !(Michael Deering)!
+
 h2. Configuration
+
+h3. Setting the default image
+
+h3. Setting the default image size
+
+h2. Credits
+
+The ideas an methods for this plugin are from expanding upon my original blog post "Adding Gravitar To Your Website Or Blog (Gravitar Rails)":http://mdeering.com/posts/005-adding-gravitar-to-your-website-or-blog
