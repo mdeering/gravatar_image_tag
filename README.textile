@@ -2,7 +2,7 @@
 
 h1. Gravitar Helper Plugin
 
-Rails view helper for grabbing "Gravitar":http://en.gravatar.com/ images.  The goal here is to be highly configurable and have those configuration points well documented.
+Rails view helper for grabbing "Gravitar":http://en.gravatar.com/ images.  The goal here is to be configurable and have those configuration points documented!
 
 h2. Install as a Ruby on Rails Plugin
 
@@ -19,17 +19,45 @@ h2. Usage
 
 Once you have installed it as a plugin for your rails app usage is simple.
 
-<pre>
-  gravitar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'))
-</pre>
+<pre>gravitar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering')</pre>
 
-*Boom* here is my gravitar !(Michael Deering)!
+*Boom* here is my gravitar !http://www.gravatar.com/avatar.php?gravatar_id=4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
 
 h2. Configuration
 
 h3. Setting the default image
 
+If no default image is given in either an initializer or through the options passed to the gravitar_image_tag then the default image from the gravitar site will be displayed.
+
+<pre>gravitar_image_tag('junk'), :alt => 'Default Gravitar Image')</pre>
+
+*Splat* the default gravitar image !http://www.gravatar.com/avatar.php?gravatar_id=0c821f675f132d790b3f25e79da739a7(Default Gravitar Image)!
+
+You can specify the default image through an initializer as follows:
+
+<pre># config/initializers/gravitar_defaults.rb
+ActionView::Base.default_gravitar_image  = 'http://assets.yourhost.com/images/default_gravitar.png'</pre>
+
+You can also specify the default image to fallback to or override the one set in the above initializer by passing the _:gravitar => { :default => 'http://assets.yourhost.com/images/override_gravitar.png' }_ option to the gravitar_image_tag call.  All other options will be forwarded onto the image_tag.
+
+<pre>gravitar_image_tag('junk', :alt => 'Github Default Gravitar', :gravitar => { :default => 'http://github.com/images/gravatars/gravatar-80.png' })</pre>
+
+*Ka-Pow* !http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-80.png&amp;gravatar_id=0c821f675f132d790b3f25e79da739a7(Github Default Gravitar)!
+
 h3. Setting the default image size
+
+If no default image size is given in either the plugin configuration or through the options passed to the gravitar_image_tag then the default image size from the gravitar site will be displayed (80px x 80px at the time of this writing).
+
+You can specify your default image size through the plugin configuration by adding the following line to your rails environment.
+
+<pre># config/initializers/gravitar_defaults.rb
+ActionView::Base.default_gravitar_image  = 'http://assets.yourhost.com/images/default_gravitar.png'</pre>
+
+You can also specify the image size or override the one set in the plugin configuration by passing the _:gravitar => { :size => 50 }_ option to the gravitar_image_tag call.  All other options will be forwarded on to the image_tag call.
+
+<pre>gravitar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering', :class => 'some-class', :gravitar => { :size => 15 })</pre>
+
+*Mini Me!* !(some-class)http://www.gravatar.com/avatar.php?gravatar_id=4da9ad2bd4a2d1ce3c428e32c423588a&amp;size=15(Michael Deering)!
 
 h2. Credits
 
