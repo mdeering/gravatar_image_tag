@@ -1,3 +1,3 @@
-require File.dirname(__FILE__) + '/lib/gravitar_image_tag'
+require File.dirname(__FILE__) + '/lib/gravatar_image_tag'
 
-ActionView::Base.send(:include, GravitarImageTag)
+ActionView::Base.send(:include, GravatarImageTag)
