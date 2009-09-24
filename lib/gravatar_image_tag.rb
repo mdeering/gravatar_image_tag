@@ -10,7 +10,9 @@ module GravatarImageTag
   module InstanceMethods
 
     def gravatar_image_tag(email, options = {})
-      image_tag gravatar_url(email, options.delete(:gravatar)), options
+      options[:src] = gravatar_url( email, options.delete( :gravatar ) )
+      options[:alt] ||= File.basename(options[:src], '.*').split('.').first.to_s.capitalize
+      tag 'img', options, false, false # Patch submitted to rails to allow image_tag here https://rails.lighthouseapp.com/projects/8994/tickets/2878-image_tag-doesnt-allow-escape-false-option-anymore
     end
 
     def gravatar_url(email, overrides)

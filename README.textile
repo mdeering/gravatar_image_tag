@@ -4,22 +4,22 @@ h2. This repo will be properly renamed to gravatar_image_tag once the GitHub Rac
 
 _I really can not believe that I consistently spelled the name wrong through this whole process_
 
-!http://s.gravatar.com/images/logo.png(Gravitar Logo)!
+!http://s.gravatar.com/images/logo.png(Gravatar Logo)!
 
-h1. Gravitar Image Tag Plugin
+h1. Gravatar Image Tag Plugin
 
-Rails view helper for grabbing "Gravitar":http://en.gravatar.com/ images.  The goal here is to be configurable and have those configuration points documented!
+Rails view helper for grabbing "Gravatar":http://en.gravatar.com/ images.  The goal here is to be configurable and have those configuration points documented!
 
 h2. Install as a Ruby on Rails Plugin
 
 The traditional way.
-<pre>./script/plugin install git://github.com/mdeering/gravatar_helper.git</pre>
+<pre>./script/plugin install git://github.com/mdeering/gravatar_image_tag.git</pre>
 
 or the old-school but still c00l way!
-<pre>piston import git://github.com/mdeering/gravatar_helper.git vendor/plugins/gravatar_helper</pre>
+<pre>piston import git://github.com/mdeering/gravatar_image_tag.git vendor/plugins/gravatar_image_tag</pre>
 
 or for all you hip gitsters.
-<pre>git submodule add git://github.com/mdeering/gravatar_helper.git vendor/plugins/gravatar_helper git submodule init</pre>
+<pre>git submodule add git://github.com/mdeering/gravatar_image_tag.git vendor/plugins/gravatar_image_tag git submodule init</pre>
 
 h2. Usage
 
@@ -35,9 +35,9 @@ h3. Setting the default image
 
 If no default image is given in either an initializer or through the options passed to the gravatar_image_tag then the default image from the gravatar site will be displayed.
 
-<pre>gravatar_image_tag('junk', :alt => 'Default Gravitar Image')</pre>
+<pre>gravatar_image_tag('junk', :alt => 'Default Gravatar Image')</pre>
 
-*Splat* the default gravatar image !http://www.gravatar.com/avatar.php?gravatar_id=0c821f675f132d790b3f25e79da739a7(Default Gravitar Image)!
+*Splat* the default gravatar image !http://www.gravatar.com/avatar.php?gravatar_id=0c821f675f132d790b3f25e79da739a7(Default Gravatar Image)!
 
 You can specify the default image through an initializer as follows:
 
@@ -46,9 +46,9 @@ ActionView::Base.default_gravatar_image  = 'http://assets.yourhost.com/images/de
 
 You can also specify the default image to fallback to or override the one set in the above initializer by passing the _:gravatar => { :default => 'http://assets.yourhost.com/images/override_gravatar.png' }_ option to the gravatar_image_tag call.  All other options will be forwarded onto the image_tag.
 
-<pre>gravatar_image_tag('junk', :alt => 'Github Default Gravitar', :gravatar => { :default => 'http://github.com/images/gravatars/gravatar-80.png' })</pre>
+<pre>gravatar_image_tag('junk', :alt => 'Github Default Gravatar', :gravatar => { :default => 'http://github.com/images/gravatars/gravatar-80.png' })</pre>
 
-*Ka-Pow* !http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-80.png&gravatar_id=0c821f675f132d790b3f25e79da739a7(Github Default Gravitar)!
+*Ka-Pow* !http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-80.png&gravatar_id=0c821f675f132d790b3f25e79da739a7(Github Default Gravatar)!
 
 h3. Setting the default image size
 
@@ -67,4 +67,4 @@ You can also specify the image size or override the one set in the plugin config
 
 h2. Credits
 
-The ideas an methods for this plugin are from expanding upon my original blog post "Adding Gravitar To Your Website Or Blog (Gravitar Rails)":http://mdeering.com/posts/005-adding-gravatar-to-your-website-or-blog
+The ideas an methods for this plugin are from expanding upon my original blog post "Adding Gravatar To Your Website Or Blog (Gravatar Rails)":http://mdeering.com/posts/005-adding-gravitar-to-your-website-or-blog
