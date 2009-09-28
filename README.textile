@@ -1,9 +1,3 @@
-h1. Important Note!!!
-
-h2. This repo will be properly renamed to gravatar_image_tag once the GitHub Rackspace move is done this weekend and they turn back on renaming.
-
-_I really can not believe that I consistently spelled the name wrong through this whole process_
-
 !http://s.gravatar.com/images/logo.png(Gravatar Logo)!
 
 h1. Gravatar Image Tag Plugin
@@ -68,3 +62,5 @@ You can also specify the image size or override the one set in the plugin config
 h2. Credits
 
 The ideas an methods for this plugin are from expanding upon my original blog post "Adding Gravatar To Your Website Or Blog (Gravatar Rails)":http://mdeering.com/posts/005-adding-gravitar-to-your-website-or-blog
+
+Copyright (c) 2009 "Michael Deering(Ruby on Rails Development Edmonton)":http://mdeering.com, released under the MIT license
