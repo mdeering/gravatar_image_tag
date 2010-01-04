@@ -25,7 +25,6 @@ describe GravatarImageTag do
     it "#gravatar_image_tag should create the provided url with the provided options #{options}"  do
       view = ActionView::Base.new
       image_tag = view.gravatar_image_tag(email, options)
-      puts image_tag
       params.all? {|key, value| image_tag.include?("#{key}=#{value}")}.should be_true
     end
   end

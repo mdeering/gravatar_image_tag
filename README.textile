@@ -4,6 +4,18 @@ h1. Gravatar Image Tag Plugin
 
 Rails view helper for grabbing "Gravatar":http://en.gravatar.com/ images.  The goal here is to be configurable and have those configuration points documented!
 
+h2. Install as a Ruby Gem
+
+<pre>sudo gem install gravatar_image_tag</pre>
+
+p. Include the following line in your Rails environment
+
+<pre>config.gem 'gravatar_image_tag'</pre>
+
+p. Then ensure the gem is installed if you did not already run the gem install as noted above.
+
+<pre>rake gems:install</pre>
+
 h2. Install as a Ruby on Rails Plugin
 
 The traditional way.
