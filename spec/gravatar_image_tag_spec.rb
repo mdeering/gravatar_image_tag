@@ -10,6 +10,7 @@ describe GravatarImageTag do
   md5                   = '4da9ad2bd4a2d1ce3c428e32c423588a'
   default_image         = 'http://mdeering.com/images/default_gravatar.png'
   default_image_escaped = 'http%3A%2F%2Fmdeering.com%2Fimages%2Fdefault_gravatar.png'
+  default_rating        = 'x'
   default_size          = 50
   other_image           = 'http://mdeering.com/images/other_gravatar.png'
   other_image_escaped   = 'http%3A%2F%2Fmdeering.com%2Fimages%2Fother_gravatar.png'
@@ -18,6 +19,7 @@ describe GravatarImageTag do
 
   {
     { :gravatar_id => md5 } => {},
+    { :gravatar_id => md5 } => { :gravatar => { :rating => 'x' } },
     { :gravatar_id => md5, :size => 30 } => { :gravatar => {:size => 30 } },
     { :gravatar_id => md5, :default => other_image_escaped } => { :gravatar => {:default => other_image } },
     { :gravatar_id => md5, :default => other_image_escaped, :size => 30 } => { :gravatar => {:default => other_image, :size => 30 } }
@@ -30,8 +32,9 @@ describe GravatarImageTag do
   end
 
   {
-    :default_gravatar_image => default_image,
-    :default_gravatar_size  => default_size
+    :default_gravatar_image  => default_image,
+    :default_gravatar_rating => default_rating,
+    :default_gravatar_size   => default_size
   }.each do |singleton_variable, value|
     it "should create gravatar class (singleton) variable #{singleton_variable} on its included class" do
       ActionView::Base.send(singleton_variable).should == nil

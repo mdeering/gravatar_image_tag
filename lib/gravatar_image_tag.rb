@@ -1,7 +1,8 @@
 module GravatarImageTag
 
   def self.included(base)
-    base.cattr_accessor :default_gravatar_image, :default_gravatar_size, :secure_gravatar
+    base.cattr_accessor :default_gravatar_image, :default_gravatar_rating,
+                        :default_gravatar_size,  :secure_gravatar
     base.send :include, InstanceMethods
   end
 
@@ -18,6 +19,7 @@ module GravatarImageTag
       url_params = {
         :default     => ActionView::Base.default_gravatar_image,
         :gravatar_id => Digest::MD5.hexdigest(email),
+        :rating      => ActionView::Base.default_gravatar_rating,
         :secure      => ActionView::Base.secure_gravatar,
         :size        => ActionView::Base.default_gravatar_size
       }.merge(overrides).delete_if { |key, value| value.nil? }
