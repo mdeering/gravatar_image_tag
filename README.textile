@@ -33,7 +33,7 @@ Once you have installed it as a plugin for your rails app usage is simple.
 
 <pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering')</pre>
 
-*Boom* here is my gravatar !http://www.gravatar.com/avatar.php?gravatar_id=4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
+*Boom* here is my gravatar !http://www.gravatar.com/avata/4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
 
 h2. Configuration Points
 
@@ -43,7 +43,7 @@ If no default image is given in either an initializer or through the options pas
 
 <pre>gravatar_image_tag('junk', :alt => 'Default Gravatar Image')</pre>
 
-*Splat* the default gravatar image !http://www.gravatar.com/avatar.php?gravatar_id=0c821f675f132d790b3f25e79da739a7(Default Gravatar Image)!
+*Splat* the default gravatar image !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7(Default Gravatar Image)!
 
 You can specify the default image through an initializer as follows:
 
@@ -54,7 +54,13 @@ You can also specify the default image to fallback to or override the one set in
 
 <pre>gravatar_image_tag('junk', :alt => 'Github Default Gravatar', :gravatar => { :default => 'http://github.com/images/gravatars/gravatar-80.png' })</pre>
 
-*Ka-Pow* !http://www.gravatar.com/avatar.php?default=http%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-80.png&gravatar_id=0c821f675f132d790b3f25e79da739a7(Github Default Gravatar)!
+*Ka-Pow* !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7?default=http%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-80.png(Github Default Gravatar)!
+
+p. Other options supported besides an image url to fall back on include the following:
+* :identicon !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7?default=identicon(Identicon Avatar)!
+* :monsterid !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7?default=monsterid(Monster Id Avatar)!
+* :wavatar !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7?default=wavatar(Wavatar Avatar)!
+* 404: !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7?default=404(Not Found)!
 
 h3. Setting the default image size
 
@@ -69,7 +75,7 @@ You can also specify the image size or override the one set in the plugin config
 
 <pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering', :class => 'some-class', :gravatar => { :size => 15 })</pre>
 
-*Mini Me!* !(some-class)http://www.gravatar.com/avatar.php?gravatar_id=4da9ad2bd4a2d1ce3c428e32c423588a&size=15(Michael Deering)!
+*Mini Me!* !(some-class)http://www.gravatar.com/avatar/4da9ad2bd4a2d1ce3c428e32c423588a?size=15(Michael Deering)!
 
 h3. Grabbing gravatars from the secure gravatar server.
 
@@ -77,12 +83,34 @@ p. You can make a request for a gravatar from the secure server at https://secur
 
 <pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering', :gravatar => { :secure => true } )</pre>
 
-Delivered by a secure url! !https://secure.gravatar.com/avatar.php?gravatar_id=4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
+Delivered by a secure url! !https://secure.gravatar.com/avatar/4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
 
 p. You globally set the gravatar image tag to always use the secure server by setting the following.  By default this is set to false.
 
 <pre># config/initializers/gravatar_defaults.rb
 ActionView::Base.secure_gravatar  = true</pre>
+
+h3. Using Gravatar's built in rating system
+
+p. By default only those gravatars that have a rating of 'g' are returned.  You can change this by passing in the rating parameter as follows.  Possible options for ratings are _g, pg, r, or x_.
+
+<pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering', :gravatar => { :rating => 'pg' } )</pre>
+
+p. You can globally set the gravatar image tag rating by setting the following.  There is no default value, the default of 'g' is being set by the gravatar service itself.
+
+<pre># config/initializers/gravatar_defaults.rb
+ActionView::Base.default_gravatar_rating  = 'r'</pre>
+
+h3. Specifying a filetype
+
+p. By default no filetype extension is given in the produced gravatar urls but of your application requires it you can specify one to be added to the generated url.
+
+<pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering', :gravatar => { :filetype => :gif } )</pre>
+
+p. You can globally set the filetype extension as follows.
+
+<pre># config/initializers/gravatar_defaults.rb
+ActionView::Base.default_gravatar_filetype  = :gif</pre>
 
 h2. Credits
 
