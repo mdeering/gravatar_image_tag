@@ -23,7 +23,7 @@ module GravatarImageTag
         :secure      => ActionView::Base.secure_gravatar,
         :size        => ActionView::Base.default_gravatar_size
       }.merge(overrides).delete_if { |key, value| value.nil? }
-      "#{gravatar_url_base(gravatar_params.delete(:secure))}/#{gravitar_id(email, gravatar_params.delete(:filetype))}#{url_params(gravatar_params)}"
+      "#{gravatar_url_base(gravatar_params.delete(:secure))}/#{gravatar_id(email, gravatar_params.delete(:filetype))}#{url_params(gravatar_params)}"
     end
 
     private
@@ -32,7 +32,7 @@ module GravatarImageTag
         'http' + (!!secure ? 's://secure.' : '://') + 'gravatar.com/avatar'
       end
 
-      def gravitar_id(email, filetype = nil)
+      def gravatar_id(email, filetype = nil)
         "#{ Digest::MD5.hexdigest(email) }#{ ".#{filetype}" unless filetype.nil? }"
       end
 
