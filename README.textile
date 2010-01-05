@@ -33,7 +33,7 @@ Once you have installed it as a plugin for your rails app usage is simple.
 
 <pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering')</pre>
 
-*Boom* here is my gravatar !http://www.gravatar.com/avata/4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
+*Boom* here is my gravatar !http://www.gravatar.com/avatar/4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
 
 h2. Configuration Points
 
