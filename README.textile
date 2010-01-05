@@ -71,6 +71,19 @@ You can also specify the image size or override the one set in the plugin config
 
 *Mini Me!* !(some-class)http://www.gravatar.com/avatar.php?gravatar_id=4da9ad2bd4a2d1ce3c428e32c423588a&size=15(Michael Deering)!
 
+h3. Grabbing gravatars from the secure gravatar server.
+
+p. You can make a request for a gravatar from the secure server at https://secure.gravatar.com by passing the _:gravatar => { :secure => true }_ option to the gravatar_image_tag call.
+
+<pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering', :gravatar => { :secure => true } )</pre>
+
+Delivered by a secure url! !https://secure.gravatar.com/avatar.php?gravatar_id=4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
+
+p. You globally set the gravatar image tag to always use the secure server by setting the following.  By default this is set to false.
+
+<pre># config/initializers/gravatar_defaults.rb
+ActionView::Base.secure_gravatar  = true</pre>
+
 h2. Credits
 
 The ideas an methods for this plugin are from expanding upon my original blog post "Adding Gravatar To Your Website Or Blog (Gravatar Rails)":http://mdeering.com/posts/005-adding-gravitar-to-your-website-or-blog

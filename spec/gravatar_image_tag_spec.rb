@@ -54,4 +54,12 @@ describe GravatarImageTag do
     end
   end
 
+  it 'should request the gravitar image from the non-secure server if the https => false option is given' do
+    (!!view.gravatar_image_tag(email, { :gravatar => { :secure => false } }).match(/^https:\/\/secure.gravatar.com\/avatar\//)).should be_false
+  end
+
+  it 'should request the gravitar image from the secure server if the https => true option is given' do
+    (!!view.gravatar_image_tag(email, { :gravatar => { :secure => true } }).match(/src="https:\/\/secure.gravatar.com\/avatar.php/)).should be_true
+  end
+
 end

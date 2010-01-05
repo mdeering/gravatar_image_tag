@@ -1,0 +1,9 @@
+h1. 0.1.0
+
+* -Support https calls to Gravatar-
+* Support the ratings call to Gravatar
+* Support for the filetype call to Gravatar
+
+h1. 0.0.1
+
+* -package things up into a gem hosted over at gemcutter.- "Hosted on Gemcutter now(Gravatar Image Tag Ruby Gem)":http://gemcutter.org/gems/gravatar_image_tag
