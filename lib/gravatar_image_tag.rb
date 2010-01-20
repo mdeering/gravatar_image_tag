@@ -17,11 +17,11 @@ module GravatarImageTag
     def gravatar_url(email, overrides)
       overrides ||= {}
       gravatar_params = {
-        :default     => ActionView::Base.default_gravatar_image,
-        :filetype    => ActionView::Base.default_gravatar_filetype,
-        :rating      => ActionView::Base.default_gravatar_rating,
-        :secure      => ActionView::Base.secure_gravatar,
-        :size        => ActionView::Base.default_gravatar_size
+        :default     => default_gravatar_image,
+        :filetype    => default_gravatar_filetype,
+        :rating      => default_gravatar_rating,
+        :secure      => secure_gravatar,
+        :size        => default_gravatar_size
       }.merge(overrides).delete_if { |key, value| value.nil? }
       "#{gravatar_url_base(gravatar_params.delete(:secure))}/#{gravatar_id(email, gravatar_params.delete(:filetype))}#{url_params(gravatar_params)}"
     end
