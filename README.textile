@@ -105,4 +105,4 @@ h2. Credits
 
 The ideas an methods for this plugin are from expanding upon my original blog post "Adding Gravatar To Your Website Or Blog (Gravatar Rails)":http://mdeering.com/posts/005-adding-gravitar-to-your-website-or-blog
 
-Copyright (c) 2009 "Michael Deering(Ruby on Rails Development Edmonton)":http://mdeering.com, released under the MIT license
+Copyright (c) 2009-2010 "Michael Deering(Ruby on Rails Development Edmonton)":http://mdeering.com, released under the MIT license
