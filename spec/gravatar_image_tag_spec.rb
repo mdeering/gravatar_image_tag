@@ -42,6 +42,7 @@ describe GravatarImageTag do
     :secure_gravatar           => secure
   }.each do |singleton_variable, value|
     it "should give a deprication warning for assigning to #{singleton_variable} and passthrough to set the new variable" do
+      ActionView::Base.should_receive(:warn)
       ActionView::Base.send("#{singleton_variable}=", value)
       GravatarImageTag.configuration.default_image == value if singleton_variable == :default_gravatar_image
       GravatarImageTag.configuration.filetype      == value if singleton_variable == :default_gravatar_filetype
@@ -54,9 +55,9 @@ describe GravatarImageTag do
   # Now that the defaults are set...
   {
     { :gravatar_id => md5, :size => default_size, :default => default_image_escaped } => {},
-    { :gravatar_id => md5, :size => 30, :default => default_image_escaped } => { :gravatar => { :size => 30 }},
+    { :gravatar_id => md5, :size => 30, :default => default_image_escaped } => { :gravatar => { :size => 30 } },
     { :gravatar_id => md5, :size => default_size, :default => other_image_escaped } => { :gravatar => {:default => other_image } },
-    { :gravatar_id => md5, :size => 30, :default => other_image_escaped } => { :gravatar => { :default => other_image, :size => 30 }},
+    { :gravatar_id => md5, :size => 30, :default => other_image_escaped } => { :gravatar => { :default => other_image, :size => 30 } },
   }.each do |params, options|
     it "#gravatar_image_tag #{params} should create the provided url when defaults have been set with the provided options #{options}"  do
       view = ActionView::Base.new
@@ -72,6 +73,10 @@ describe GravatarImageTag do
 
   it 'should request the gravatar image from the secure server if the https => true option is given' do
     (!!view.gravatar_image_tag(email, { :gravatar => { :secure => true } }).match(/src="https:\/\/secure.gravatar.com\/avatar\//)).should be_true
+  end
+
+  it 'GravatarImageTag#gravitar_id should not error out when email is nil' do
+    lambda { GravatarImageTag::gravatar_id(nil) }.should_not  raise_error(TypeError)
   end
 
 end

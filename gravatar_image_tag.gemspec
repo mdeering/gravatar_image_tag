@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{gravatar_image_tag}
-  s.version = "0.1.0"
+  s.version = "1.0.0.pre1"
 
-  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Michael Deering"]
-  s.date = %q{2010-01-19}
+  s.date = %q{2010-07-11}
   s.email = %q{mdeering@mdeering.com}
   s.extra_rdoc_files = [
     "README.textile"
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/mdeering/gravatar_image_tag}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.7}
   s.summary = %q{A configurable and documented Rails view helper for adding gravatars into your Rails application.}
   s.test_files = [
     "spec/gravatar_image_tag_spec.rb",
@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
     else
     end
   else

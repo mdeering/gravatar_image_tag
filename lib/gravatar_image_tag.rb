@@ -14,39 +14,38 @@ module GravatarImageTag
    end
 
   def self.included(base)
-    GravatarImageTag.configure do |c|
-    end
+    GravatarImageTag.configure { |c| nil }
     base.extend ClassMethods
     base.send :include, InstanceMethods
   end
 
   module ClassMethods
     def default_gravatar_filetype=(value)
-      # TODO: Deprication Warning!
+      warn "DEPRECATION WARNING: configuration of filetype= through this method is deprecated! Use the block configuration instead. http://github.com/mdeering/gravatar_image_tag"
       GravatarImageTag.configure do |c|
         c.filetype = value
       end
     end
     def default_gravatar_image=(value)
-      # TODO: Deprication Warning!
+      warn "DEPRECATION WARNING: configuration of default_gravatar_image= through this method is deprecated! Use the block configuration instead. http://github.com/mdeering/gravatar_image_tag"
       GravatarImageTag.configure do |c|
         c.default_image = value
       end
     end
     def default_gravatar_rating=(value)
-      # TODO: Deprication Warning!
+      warn "DEPRECATION WARNING: configuration of default_gravatar_rating= through this method is deprecated! Use the block configuration instead. http://github.com/mdeering/gravatar_image_tag"
       GravatarImageTag.configure do |c|
         c.rating = value
       end
     end
     def default_gravatar_size=(value)
-      # TODO: Deprication Warning!
+      warn "DEPRECATION WARNING: configuration of default_gravatar_size= through this method is deprecated! Use the block configuration instead. http://github.com/mdeering/gravatar_image_tag"
       GravatarImageTag.configure do |c|
         c.size = value
       end
     end
     def secure_gravatar=(value)
-      # TODO: Deprication Warning!
+      warn "DEPRECATION WARNING: configuration of secure_gravatar= through this method is deprecated! Use the block configuration instead. http://github.com/mdeering/gravatar_image_tag"
       GravatarImageTag.configure do |c|
         c.secure = value
       end
@@ -82,7 +81,7 @@ module GravatarImageTag
     end
 
     def self.gravatar_id(email, filetype = nil)
-      "#{ Digest::MD5.hexdigest(email) }#{ ".#{filetype}" unless filetype.nil? }"
+      "#{ Digest::MD5.hexdigest(email) }#{ ".#{filetype}" unless filetype.nil? }" unless email.nil?
     end
 
     def self.url_params(gravatar_params)
