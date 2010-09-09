@@ -10,7 +10,7 @@ end</pre>
 
 h1. 1.0.0
 
-* Block Configuration DSL support
+* -Block Configuration DSL support-
 
 <pre># config/initializers/gravatar_image_tag.rb
 GravatarImageTag.configure do |config|
@@ -30,4 +30,4 @@ h1. 0.1.0
 
 h1. 0.0.1
 
-* -package things up into a gem hosted over at gemcutter.- "Hosted on Gemcutter now(Gravatar Image Tag Ruby Gem)":http://gemcutter.org/gems/gravatar_image_tag
+* -package things up into a gem.- "Hosted on Gemcutter now(Gravatar Image Tag Ruby Gem)":http://rubygems.org/gems/gravatar_image_tag

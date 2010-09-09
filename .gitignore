@@ -2,3 +2,5 @@
 coverage
 rdoc
 pkg
+.bundle
+Gemfile.lock
