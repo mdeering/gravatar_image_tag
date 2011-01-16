@@ -24,7 +24,7 @@ p. Include the following line in your Rails environment
 <pre># Gemfile
   gem 'gravatar_image_tag'</pre>
 
-p. Then ensure the gem is installed by running the following command from the your application root.
+p. Then ensure the gem is installed by running the following command from the application root.
 
 <pre>bundle install</pre>
 
