@@ -62,7 +62,7 @@ p. You can set the default gravatar image inline as follows:
 
 <pre>gravatar_image_tag('junk', :alt => 'Github Default Gravatar', :gravatar => { :default => 'http://github.com/images/gravatars/gravatar-80.png' })</pre>
 
-p. *Ka-Pow* !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7?default=http%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-80.png(Github Default Gravatar)!
+p. *Ka-Pow* !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7?default=https%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-80.png(Github Default Gravatar)!
 
 p. Other options supported besides an image url to fall back on include the following:
 
