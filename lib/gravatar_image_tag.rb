@@ -84,7 +84,11 @@ module GravatarImageTag
     end
 
     def self.gravatar_id(email, filetype = nil)
-      "#{ Digest::MD5.hexdigest(email) }#{ ".#{filetype}" unless filetype.nil? }" unless email.nil?
+      hex = email || Digest::MD5.hexdigest("junk")
+      if hex.include?("@")
+        hex = Digest::MD5.hexdigest(hex)
+      end
+      "#{ hex }#{ ".#{filetype}" unless filetype.nil? }"
     end
 
     def self.url_params(gravatar_params)
