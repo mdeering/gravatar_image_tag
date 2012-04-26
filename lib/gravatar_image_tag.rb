@@ -64,6 +64,7 @@ module GravatarImageTag
 
     def gravatar_image_tag(email, options = {})
       gravatar_overrides = options.delete(:gravatar)
+      email = email.strip.downcase if email.is_a? String
       options[:src] = GravatarImageTag::gravatar_url(email, gravatar_overrides)
       options[:alt] ||= 'Gravatar'
       options[:height] = options[:width] = "#{GravatarImageTag::gravatar_options(gravatar_overrides)[:size] || 80}px" if GravatarImageTag.configuration.include_size_attributes

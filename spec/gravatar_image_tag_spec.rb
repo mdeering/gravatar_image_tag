@@ -104,4 +104,8 @@ describe GravatarImageTag do
     lambda { GravatarImageTag::gravatar_id(nil) }.should_not raise_error(TypeError)
   end
 
+  it 'should normalize the email to Gravatar standards (http://en.gravatar.com/site/implement/hash/)' do
+    view.gravatar_image_tag(" camelCaseEmail@example.com\t\n").should == view.gravatar_image_tag('camelcaseemail@example.com')
+  end
+
 end
