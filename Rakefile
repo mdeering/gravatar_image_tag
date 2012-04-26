@@ -1,6 +1,5 @@
 require 'rake'
-require 'rake/rdoctask'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task'
 
 begin
   AUTHOR   = "Michael Deering"
@@ -28,23 +27,11 @@ desc 'Default: spec tests.'
 task :default => :spec
 
 desc 'Test the gravatar_image_tag gem.'
-Spec::Rake::SpecTask.new('spec') do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
-  t.spec_opts = ["-c"]
+RSpec::Core::RakeTask.new do |t|
 end
 
 desc "Run all examples with RCov"
-Spec::Rake::SpecTask.new('examples_with_rcov') do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
+RSpec::Core::RakeTask.new(:coverage) do |t|
   t.rcov = true
   t.rcov_opts = ['--exclude', '/opt,spec,Library']
-end
-
-desc 'Generate documentation for the gravatar_image_tag plugin.'
-Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'GravatarImageTag'
-  rdoc.options << '--line-numbers' << '--inline-source'
-  rdoc.rdoc_files.include('README.textile')
-  rdoc.rdoc_files.include('lib/**/*.rb')
 end
