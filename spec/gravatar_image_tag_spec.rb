@@ -75,8 +75,19 @@ describe GravatarImageTag do
     (!!view.gravatar_image_tag(email, { :gravatar => { :secure => true } }).match(/src="https:\/\/secure.gravatar.com\/avatar\//)).should be_true
   end
 
+  it 'should set the image tags height and width to avoid the page going all jiggy (technical term) when loading a page with lots of Gravatars' do
+    (!!view.gravatar_image_tag(email).match(/height="50px"/)).should be_true
+    (!!view.gravatar_image_tag(email).match(/width="50px"/)).should  be_true
+  end
+
+  it 'should not include the height and width attributes on the image tag if it is turned off in the configuration' do
+    GravatarImageTag.configure { |c| c.include_size_attributes = false }
+    (!!view.gravatar_image_tag(email).match(/height=/)).should be_false
+    (!!view.gravatar_image_tag(email).match(/width=/)).should  be_false
+  end
+
   it 'GravatarImageTag#gravitar_id should not error out when email is nil' do
-    lambda { GravatarImageTag::gravatar_id(nil) }.should_not  raise_error(TypeError)
+    lambda { GravatarImageTag::gravatar_id(nil) }.should_not raise_error(TypeError)
   end
 
 end
