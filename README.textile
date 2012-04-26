@@ -60,9 +60,9 @@ p. *Splat* the default gravatar image !http://www.gravatar.com/avatar/0c821f675f
 
 p. You can set the default gravatar image inline as follows:
 
-<pre>gravatar_image_tag('junk', :alt => 'Github Default Gravatar', :gravatar => { :default => 'http://github.com/images/gravatars/gravatar-80.png' })</pre>
+<pre>gravatar_image_tag('junk', :alt => 'Github Default Gravatar', :gravatar => { :default => 'https://assets.github.com/images/gravatars/gravatar-140.png' })</pre>
 
-p. *Ka-Pow* !http://www.gravatar.com/avatar/0c821f675f132d790b3f25e79da739a7?default=https%3A%2F%2Fgithub.com%2Fimages%2Fgravatars%2Fgravatar-80.png(Github Default Gravatar)!
+p. *Ka-Pow* !https://assets.github.com/images/gravatars/gravatar-140.png(Github Default Gravatar)!
 
 p. Other options supported besides an image url to fall back on include the following:
 
@@ -103,6 +103,6 @@ p. You can set the gravatar filetype inline as follows:
 
 h2. Credits
 
-The ideas an methods for this plugin are from expanding upon my original blog post "Adding Gravatar To Your Website Or Blog (Gravatar Rails)":http://mdeering.com/posts/005-adding-gravitar-to-your-website-or-blog
+The ideas and methods for this plugin are from expanding upon my original blog post "Adding Gravatar To Your Website Or Blog (Gravatar Rails)":http://mdeering.com/posts/005-adding-gravitar-to-your-website-or-blog
 
 Copyright (c) 2009-2010 "Michael Deering(Ruby on Rails Development Edmonton)":http://mdeering.com, released under the MIT license
