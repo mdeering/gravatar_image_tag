@@ -77,20 +77,20 @@ describe GravatarImageTag do
 
   it 'should set the image tags height and width to avoid the page going all jiggy (technical term) when loading a page with lots of Gravatars' do
     GravatarImageTag.configure { |c| c.size = 30 }
-    (!!view.gravatar_image_tag(email).match(/height="30px"/)).should be_true
-    (!!view.gravatar_image_tag(email).match(/width="30px"/)).should  be_true
+    (!!view.gravatar_image_tag(email).match(/height="30"/)).should be_true
+    (!!view.gravatar_image_tag(email).match(/width="30"/)).should  be_true
   end
 
   it 'should set the image tags height and width attributes to 80px (gravatars default) if no size is given.' do
     GravatarImageTag.configure { |c| c.size = nil }
-    (!!view.gravatar_image_tag(email).match(/height="80px"/)).should be_true
-    (!!view.gravatar_image_tag(email).match(/width="80px"/)).should  be_true
+    (!!view.gravatar_image_tag(email).match(/height="80"/)).should be_true
+    (!!view.gravatar_image_tag(email).match(/width="80"/)).should  be_true
   end
 
   it 'should set the image tags height and width attributes from the overrides on the size' do
     GravatarImageTag.configure { |c| c.size = 120 }
-    (!!view.gravatar_image_tag(email, :gravatar => { :size => 45 }).match(/height="45px"/)).should be_true
-    (!!view.gravatar_image_tag(email, :gravatar => { :size => 75 }).match(/width="75px"/)).should  be_true
+    (!!view.gravatar_image_tag(email, :gravatar => { :size => 45 }).match(/height="45"/)).should be_true
+    (!!view.gravatar_image_tag(email, :gravatar => { :size => 75 }).match(/width="75"/)).should  be_true
   end
 
 
