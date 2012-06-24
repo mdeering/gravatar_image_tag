@@ -67,7 +67,7 @@ module GravatarImageTag
       email = email.strip.downcase if email.is_a? String
       options[:src] = GravatarImageTag::gravatar_url(email, gravatar_overrides)
       options[:alt] ||= 'Gravatar'
-      options[:height] = options[:width] = "#{GravatarImageTag::gravatar_options(gravatar_overrides)[:size] || 80}px" if GravatarImageTag.configuration.include_size_attributes
+      options[:height] = options[:width] = "#{GravatarImageTag::gravatar_options(gravatar_overrides)[:size] || 80}" if GravatarImageTag.configuration.include_size_attributes
       tag 'img', options, false, false # Patch submitted to rails to allow image_tag here https://rails.lighthouseapp.com/projects/8994/tickets/2878-image_tag-doesnt-allow-escape-false-option-anymore
     end
 
