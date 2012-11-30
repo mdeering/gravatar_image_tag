@@ -63,6 +63,7 @@ describe GravatarImageTag do
       view = ActionView::Base.new
       image_tag = view.gravatar_image_tag(email, options)
       image_tag.include?("#{params.delete(:gravatar_id)}.#{default_filetype}").should be_true
+      image_tag.include?('&amp;').should be_false
       params.all? {|key, value| image_tag.include?("#{key}=#{value}")}.should be_true
     end
   end
