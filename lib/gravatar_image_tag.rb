@@ -71,8 +71,7 @@ module GravatarImageTag
       tag 'img', options, false, false # Patch submitted to rails to allow image_tag here https://rails.lighthouseapp.com/projects/8994/tickets/2878-image_tag-doesnt-allow-escape-false-option-anymore
     end
     
-    def gravatar_image_url(email, options = {})
-      gravatar_overrides = options.delete(:gravatar)
+    def gravatar_image_url(email, gravatar_overrides = {})
       email = email.strip.downcase if email.is_a? String
       GravatarImageTag::gravatar_url(email, gravatar_overrides)
     end
