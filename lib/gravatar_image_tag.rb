@@ -105,7 +105,7 @@ module GravatarImageTag
 
     def self.url_params(gravatar_params)
       return nil if gravatar_params.keys.size == 0
-      "?#{gravatar_params.map { |key, value| "#{key}=#{URI.escape(value.is_a?(String) ? value : value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"}.join('&amp;')}"
+      "?#{gravatar_params.map { |key, value| "#{key}=#{URI.escape(value.is_a?(String) ? value : value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"}.join('&')}"
     end
 
 end
