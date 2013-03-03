@@ -40,6 +40,14 @@ Once you have installed it as a plugin for your rails app usage is simple.
 
 *Boom* here is my gravatar !http://www.gravatar.com/avatar/4da9ad2bd4a2d1ce3c428e32c423588a(Michael Deering)!
 
+p. Return only the Gravatar URL
+
+<pre>gravatar_image_url('spam@spam.com'.gsub('spam', 'mdeering'), filetype: :png, rating: 'pg', size: 15, secure:false } )</pre>
+
+p. Useful when used in your inline CSS.
+
+<pre><div class="gravatar" style="background:transparent url(<%= gravatar_image_url('spam@spam.com'.gsub('spam', 'mdeering')) %>) 0px 0px no-repeat"></div></pre>
+
 h2. Configuration
 
 h3. Global configuration points
@@ -94,13 +102,11 @@ p. You can set the gravatar rating inline as follows:
 
 <pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering', :gravatar => { :rating => 'pg' } )</pre>
 
-
 h3. Specifying a filetype
 
 p. You can set the gravatar filetype inline as follows:
 
 <pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering', :gravatar => { :filetype => :gif } )</pre>
-
 
 h2. Credits
 
