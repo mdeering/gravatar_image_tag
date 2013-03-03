@@ -35,7 +35,8 @@ h2. Install as a Ruby on Rails Plugin
 h2. Usage
 
 h3. Gravatar Image Tag
-Once you have installed it as a plugin for your rails app usage is simple.
+
+p. Once you have installed it as a plugin for your rails app usage is simple.
 
 <pre>gravatar_image_tag('spam@spam.com'.gsub('spam', 'mdeering'), :alt => 'Michael Deering')</pre>
 
