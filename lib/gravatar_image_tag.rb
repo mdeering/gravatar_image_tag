@@ -70,6 +70,11 @@ module GravatarImageTag
       options[:height] = options[:width] = "#{GravatarImageTag::gravatar_options(gravatar_overrides)[:size] || 80}" if GravatarImageTag.configuration.include_size_attributes
       tag 'img', options, false, false # Patch submitted to rails to allow image_tag here https://rails.lighthouseapp.com/projects/8994/tickets/2878-image_tag-doesnt-allow-escape-false-option-anymore
     end
+    
+    def gravatar_image_url(email, gravatar_overrides = {})
+      email = email.strip.downcase if email.is_a? String
+      GravatarImageTag::gravatar_url(email, gravatar_overrides)
+    end
 
   end
 
@@ -100,7 +105,7 @@ module GravatarImageTag
 
     def self.url_params(gravatar_params)
       return nil if gravatar_params.keys.size == 0
-      "?#{gravatar_params.map { |key, value| "#{key}=#{URI.escape(value.is_a?(String) ? value : value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"}.join('&amp;')}"
+      "?#{gravatar_params.map { |key, value| "#{key}=#{URI.escape(value.is_a?(String) ? value : value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"}.join('&')}"
     end
 
 end
