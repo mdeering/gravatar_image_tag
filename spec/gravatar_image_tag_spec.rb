@@ -102,7 +102,7 @@ describe GravatarImageTag do
     end
   
     it 'GravatarImageTag#gravitar_id should not error out when email is nil' do
-      lambda { GravatarImageTag::gravatar_id(nil) }.should_not raise_error(TypeError)
+      lambda { GravatarImageTag::gravatar_id(nil) }.should_not raise_error
     end
 
     it 'should normalize the email to Gravatar standards (http://en.gravatar.com/site/implement/hash/)' do
