@@ -46,7 +46,7 @@ h3. Gravatar Image URL
 
 p. You can also return just the Gravatar URL:
 
-<pre>gravatar_image_url('spam@spam.com'.gsub('spam', 'mdeering'), filetype: :png, rating: 'pg', size: 15, secure:false } )</pre>
+<pre>gravatar_image_url('spam@spam.com'.gsub('spam', 'mdeering'), filetype: :png, rating: 'pg', size: 15, secure:false )</pre>
 
 p. Useful when used in your inline CSS.
 
