@@ -13,12 +13,12 @@ module GravatarImageTag
   end
 
   class Configuration
-     attr_accessor :default_image, :filetype, :include_size_attributes, :rating, :size, :secure
+     attr_accessor :default_image, :filetype, :include_size_attributes,
+       :rating, :size, :secure
 
      def initialize
         @include_size_attributes = true
      end
-
   end
 
   def self.included(base)
@@ -61,37 +61,43 @@ module GravatarImageTag
   end
 
   module InstanceMethods
-
     def gravatar_image_tag(email, options = {})
       gravatar_overrides = options.delete(:gravatar)
-      email = email.strip.downcase if email.is_a? String
-      options[:src] = GravatarImageTag::gravatar_url(email, gravatar_overrides)
+      options[:src] = gravatar_image_url(email, gravatar_overrides)
       options[:alt] ||= 'Gravatar'
-      options[:height] = options[:width] = "#{GravatarImageTag::gravatar_options(gravatar_overrides)[:size] || 80}" if GravatarImageTag.configuration.include_size_attributes
-      tag 'img', options, false, false # Patch submitted to rails to allow image_tag here https://rails.lighthouseapp.com/projects/8994/tickets/2878-image_tag-doesnt-allow-escape-false-option-anymore
+      if GravatarImageTag.configuration.include_size_attributes
+        size = GravatarImageTag::gravatar_options(gravatar_overrides)[:size] || 80
+        options[:height] = options[:width] = size.to_s
+      end
+
+      # Patch submitted to rails to allow image_tag here
+      # https://rails.lighthouseapp.com/projects/8994/tickets/2878
+      tag 'img', options, false, false
     end
-    
+
     def gravatar_image_url(email, gravatar_overrides = {})
       email = email.strip.downcase if email.is_a? String
       GravatarImageTag::gravatar_url(email, gravatar_overrides)
     end
-
   end
 
   def self.gravatar_url(email, overrides = {})
     gravatar_params = gravatar_options(overrides || {})
-    "#{gravatar_url_base(gravatar_params.delete(:secure))}/#{gravatar_id(email, gravatar_params.delete(:filetype))}#{url_params(gravatar_params)}"
+    url_params      = url_params(gravatar_params)
+    url_base        = gravatar_url_base(gravatar_params.delete(:secure))
+    hash            = gravatar_id(email, gravatar_params.delete(:filetype))
+    "#{url_base}/#{hash}#{url_params}"
   end
 
   private
 
     def self.gravatar_options(overrides = {})
       {
-        :default     => GravatarImageTag.configuration.default_image,
-        :filetype    => GravatarImageTag.configuration.filetype,
-        :rating      => GravatarImageTag.configuration.rating,
-        :secure      => GravatarImageTag.configuration.secure,
-        :size        => GravatarImageTag.configuration.size
+        :default  => GravatarImageTag.configuration.default_image,
+        :filetype => GravatarImageTag.configuration.filetype,
+        :rating   => GravatarImageTag.configuration.rating,
+        :secure   => GravatarImageTag.configuration.secure,
+        :size     => GravatarImageTag.configuration.size
       }.merge(overrides || {}).delete_if { |key, value| value.nil? }
     end
 
@@ -100,12 +106,19 @@ module GravatarImageTag
     end
 
     def self.gravatar_id(email, filetype = nil)
-      "#{ Digest::MD5.hexdigest(email) }#{ ".#{filetype}" unless filetype.nil? }" unless email.nil?
+      return nil unless email
+      "#{ Digest::MD5.hexdigest(email) }#{ ".#{filetype}" unless filetype.nil? }"
     end
 
     def self.url_params(gravatar_params)
       return nil if gravatar_params.keys.size == 0
-      "?#{gravatar_params.map { |key, value| "#{key}=#{URI.escape(value.is_a?(String) ? value : value.to_s, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"}.join('&')}"
+      array = gravatar_params.map { |k, v| "#{k}=#{value_cleaner(v)}" }
+      "?#{array.join('&')}"
+    end
+
+    def self.value_cleaner(value)
+      value = value.to_s
+      URI.escape(value, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
     end
 
 end
