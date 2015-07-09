@@ -17,6 +17,7 @@ begin
     s.name         = GEM
     s.require_path = 'lib'
     s.summary      = SUMMARY
+    s.license      = 'MIT'
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
