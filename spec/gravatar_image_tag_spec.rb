@@ -109,6 +109,10 @@ describe GravatarImageTag do
       expect(view.gravatar_image_tag(" camelCaseEmail@example.com\t\n")).to eq(view.gravatar_image_tag('camelcaseemail@example.com'))
     end
 
+    it 'concatinates the URL params with &amp; which is the escaped & cahrachter' do
+      expect(view.gravatar_image_tag(email).match(/\&amp;/)).to be_truthy
+    end
+
   end
 
   context '#gravatar_image_url' do
