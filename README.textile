@@ -22,7 +22,7 @@ h3. Rails 3
 p. Include the following line in your Rails environment
 
 <pre># Gemfile
-  gem 'gravatar_image_tag'</pre>
+  gem 'gravatar_image_tag', '~>1.0.0.pre2'</pre>
 
 p. Then ensure the gem is installed by running the following command from the application root.
 
