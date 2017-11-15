@@ -1,14 +1,31 @@
 language: ruby
+
 env:
-  - "RAILS_VERSION=3"
-  - "RAILS_VERSION=4"
-  - "RAILS_VERSION=5"
-  - "RAILS_VERSION=master"
+  - RAILS_VERSION=3
+  - RAILS_VERSION=4
+  - RAILS_VERSION=5
+  - RAILS_VERSION=master
+
 rvm:
-  - 1.9.3
+  - 1.9
   - 2.0
   - 2.1
   - 2.2
   - 2.3
   - 2.4
   - ruby-head
+
+matrix:
+  exclued:
+    - rvm: 1.9
+      env: RAILS_VERSION=5
+    - rvm: 1.9
+      env: RAILS_VERSION=master
+    - rvm: 2.0
+      env: RAILS_VERSION=5
+    - rvm: 2.0
+      env: RAILS_VERSION=master
+    - rvm: 2.1
+      env: RAILS_VERSION=5
+    - rvm: 2.1
+      env: RAILS_VERSION=master
