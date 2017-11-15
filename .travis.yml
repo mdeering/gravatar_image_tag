@@ -16,7 +16,7 @@ rvm:
   - ruby-head
 
 matrix:
-  exclued:
+  exclude:
     - rvm: 1.9
       env: RAILS_VERSION=5
     - rvm: 1.9
