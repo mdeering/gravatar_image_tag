@@ -24,12 +24,12 @@ rescue LoadError
   puts "Jeweler, or one of its dependencies, is not available. Install it with: gem install jeweler"
 end
 
-desc 'Default: spec tests.'
-task :default => :spec
-
 desc 'Test the gravatar_image_tag gem.'
 RSpec::Core::RakeTask.new do |t|
 end
+
+desc 'Default: spec tests.'
+task :default => :spec
 
 desc "Run all examples with RCov"
 RSpec::Core::RakeTask.new(:coverage) do |t|
