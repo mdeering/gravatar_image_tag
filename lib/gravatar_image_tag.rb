@@ -83,9 +83,9 @@ module GravatarImageTag
 
   def self.gravatar_url(email, overrides = {})
     gravatar_params = gravatar_options(overrides || {})
-    url_params      = url_params(gravatar_params)
     url_base        = gravatar_url_base(gravatar_params.delete(:secure))
     hash            = gravatar_id(email, gravatar_params.delete(:filetype))
+    url_params      = url_params(gravatar_params)
     "#{url_base}/#{hash}#{url_params}"
   end
 
