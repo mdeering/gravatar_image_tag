@@ -113,7 +113,7 @@ module GravatarImageTag
     def self.url_params(gravatar_params)
       return nil if gravatar_params.keys.size == 0
       array = gravatar_params.map { |k, v| "#{k}=#{value_cleaner(v)}" }
-      "?#{array.join('&')}"
+      "?#{array.join('&amp;')}"
     end
 
     def self.value_cleaner(value)
