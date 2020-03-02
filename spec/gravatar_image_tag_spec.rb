@@ -17,7 +17,7 @@ describe GravatarImageTag do
   other_image_escaped   = 'http%3A%2F%2Fmdeering.com%2Fimages%2Fother_gravatar.png'
   secure                = false
 
-  view = ActionView::Base.new
+  let(:view) { ActionView::Base.new(ActionView::LookupContext.new([])) }
 
   context '#gravatar_image_tag' do
 
@@ -29,7 +29,6 @@ describe GravatarImageTag do
       { gravatar_id: md5, default: other_image_escaped, size: 30 } => { gravatar: { default: other_image, size: 30 } }
     }.each do |params, options|
       it "#gravatar_image_tag should create the provided url with the provided options #{options}" do
-        view = ActionView::Base.new
         image_tag = view.gravatar_image_tag(email, options)
         expect(image_tag.include?("#{params.delete(:gravatar_id)}")).to be_truthy
         expect(params.all? {|key, value| image_tag.include?("#{key}=#{value}")}).to be_truthy
@@ -62,7 +61,6 @@ describe GravatarImageTag do
       { gravatar_id: md5, size: 30, default: other_image_escaped } => { gravatar: { default: other_image, size: 30 } },
     }.each do |params, options|
       it "#gravatar_image_tag #{params} should create the provided url when defaults have been set with the provided options #{options}"  do
-        view = ActionView::Base.new
         image_tag = view.gravatar_image_tag(email, options)
         expect(image_tag.include?("#{params.delete(:gravatar_id)}.#{default_filetype}")).to be_truthy
         expect(params.all? {|key, value| image_tag.include?("#{key}=#{value}")}).to be_truthy
@@ -143,6 +141,10 @@ describe GravatarImageTag do
 
     it '#gravatar_image_url should use https protocol when the https: true option is given' do
       expect(!!view.gravatar_image_url(email, secure: true).match("^https:\/\/secure.gravatar.com\/avatar\/")).to be_truthy
+    end
+
+    it 'expect not to issue any deprecation warnings ' do
+     expect { view.gravatar_image_url(email, secure: true, rating: 'pg') }.not_to output.to_stderr
     end
 
   end
