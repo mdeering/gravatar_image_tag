@@ -145,6 +145,10 @@ describe GravatarImageTag do
       expect(!!view.gravatar_image_url(email, secure: true).match("^https:\/\/secure.gravatar.com\/avatar\/")).to be_truthy
     end
 
+    it 'expect not to issue any deprecation warnings ' do
+     expect { view.gravatar_image_url(email, secure: true, rating: 'pg') }.not_to output.to_stderr
+    end
+
   end
 
 end

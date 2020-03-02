@@ -112,13 +112,8 @@ module GravatarImageTag
 
     def self.url_params(gravatar_params)
       return nil if gravatar_params.keys.size == 0
-      array = gravatar_params.map { |k, v| "#{k}=#{value_cleaner(v)}" }
+      array = gravatar_params.map { |k, v| "#{k}=#{CGI.escape(v.to_s)}" }
       "?#{array.join('&')}"
-    end
-
-    def self.value_cleaner(value)
-      value = value.to_s
-      URI.escape(value, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
     end
 
 end
