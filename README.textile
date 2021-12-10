@@ -31,6 +31,8 @@ p. Then ensure the gem is installed by running the following command from the ap
 h2. Install as a Ruby on Rails Plugin
 
 <pre>./script/plugin install git://github.com/mdeering/gravatar_image_tag.git</pre>
+or
+<pre>git submodule add git://github.com/mdeering/gravatar_image_tag.git vendor/plugins/gravatar_image_tag git submodule init</pre>
 
 h2. Usage
 
