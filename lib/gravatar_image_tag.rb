@@ -118,7 +118,8 @@ module GravatarImageTag
 
     def self.value_cleaner(value)
       value = value.to_s
-      URI.escape(value, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
+      parser = URI::Parser.new
+      parser.escape(value, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))
     end
 
 end
