@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 require 'rubygems'
-#require 'spec'
+# require 'spec'
 require 'active_support'
 require 'action_view'
 require 'digest/md5'
